@@ -1387,13 +1387,7 @@ static void skipToMatch (const char *const pair)
 	while (matchLevel > 0  &&  (c = skipToNonWhite ()) != EOF)
 	{
 		if (CollectingSignature){
-			if(c == STRING_SYMBOL){
-				vStringCatS(Signature, QuotedString->buffer);
-				vStringDelete(QuotedString);
-				QuotedString = NULL;
-			} else {
 				vStringPut (Signature, c);
-			}
 		}
 		if (c == begin)
 		{
@@ -2183,13 +2177,9 @@ static void parseReturnType (statementInfo *const st)
 
 	vStringTerminate (ReturnType);
 
-	/*
 	printf ("~~~~~ statement ---->\n");
-	ps (st);
 	printf ("FOUND ReturnType: %s\n", vStringValue (ReturnType));
 	printf ("<~~~~~\n");
-	*/
-	vStringTerminate (ReturnType);
 	return;
 }
 
